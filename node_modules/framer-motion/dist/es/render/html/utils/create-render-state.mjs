@@ -1,9 +1,9 @@
-var createHtmlRenderState = function () { return ({
+const createHtmlRenderState = () => ({
     style: {},
     transform: {},
     transformKeys: [],
     transformOrigin: {},
     vars: {},
-}); };
+});
 
 export { createHtmlRenderState };

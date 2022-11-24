@@ -1,4 +1,3 @@
-import { __spreadArray, __read } from 'tslib';
 import { invariant } from 'hey-listen';
 import { stopAnimation, animateVisualElement } from '../render/utils/animation.mjs';
 import { setValues } from '../render/utils/setters.mjs';
@@ -10,22 +9,22 @@ function animationControls() {
     /**
      * Track whether the host component has mounted.
      */
-    var hasMounted = false;
+    let hasMounted = false;
     /**
      * Pending animations that are started before a component is mounted.
      * TODO: Remove this as animations should only run in effects
      */
-    var pendingAnimations = [];
+    const pendingAnimations = [];
     /**
      * A collection of linked component animation controls.
      */
-    var subscribers = new Set();
-    var controls = {
-        subscribe: function (visualElement) {
+    const subscribers = new Set();
+    const controls = {
+        subscribe(visualElement) {
             subscribers.add(visualElement);
-            return function () { return void subscribers.delete(visualElement); };
+            return () => void subscribers.delete(visualElement);
         },
-        start: function (definition, transitionOverride) {
+        start(definition, transitionOverride) {
             /**
              * TODO: We only perform this hasMounted check because in Framer we used to
              * encourage the ability to start an animation within the render phase. This
@@ -33,41 +32,40 @@ function animationControls() {
              * we can ditch this.
              */
             if (hasMounted) {
-                var animations_1 = [];
-                subscribers.forEach(function (visualElement) {
-                    animations_1.push(animateVisualElement(visualElement, definition, {
-                        transitionOverride: transitionOverride,
+                const animations = [];
+                subscribers.forEach((visualElement) => {
+                    animations.push(animateVisualElement(visualElement, definition, {
+                        transitionOverride,
                     }));
                 });
-                return Promise.all(animations_1);
+                return Promise.all(animations);
             }
             else {
-                return new Promise(function (resolve) {
+                return new Promise((resolve) => {
                     pendingAnimations.push({
                         animation: [definition, transitionOverride],
-                        resolve: resolve,
+                        resolve,
                     });
                 });
             }
         },
-        set: function (definition) {
+        set(definition) {
             invariant(hasMounted, "controls.set() should only be called after a component has mounted. Consider calling within a useEffect hook.");
-            return subscribers.forEach(function (visualElement) {
+            return subscribers.forEach((visualElement) => {
                 setValues(visualElement, definition);
             });
         },
-        stop: function () {
-            subscribers.forEach(function (visualElement) {
+        stop() {
+            subscribers.forEach((visualElement) => {
                 stopAnimation(visualElement);
             });
         },
-        mount: function () {
+        mount() {
             hasMounted = true;
-            pendingAnimations.forEach(function (_a) {
-                var animation = _a.animation, resolve = _a.resolve;
-                controls.start.apply(controls, __spreadArray([], __read(animation), false)).then(resolve);
+            pendingAnimations.forEach(({ animation, resolve }) => {
+                controls.start(...animation).then(resolve);
             });
-            return function () {
+            return () => {
                 hasMounted = false;
                 controls.stop();
             };

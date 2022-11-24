@@ -1,9 +1,8 @@
 import { useEffect } from 'react';
 
-function addDomEvent(target, eventName, handler, options) {
-    if (options === void 0) { options = { passive: true }; }
+function addDomEvent(target, eventName, handler, options = { passive: true }) {
     target.addEventListener(eventName, handler, options);
-    return function () { return target.removeEventListener(eventName, handler); };
+    return () => target.removeEventListener(eventName, handler);
 }
 /**
  * Attaches an event listener directly to the provided DOM element.
@@ -27,8 +26,8 @@ function addDomEvent(target, eventName, handler, options) {
  * @public
  */
 function useDomEvent(ref, eventName, handler, options) {
-    useEffect(function () {
-        var element = ref.current;
+    useEffect(() => {
+        const element = ref.current;
         if (handler && element) {
             return addDomEvent(element, eventName, handler, options);
         }

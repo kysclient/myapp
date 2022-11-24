@@ -23,10 +23,8 @@ const MyApp = ({Component, pageProps}: AppProps) => {
 
     return (
         <RecoilRoot>
-
             <ChakraProvider resetCSS theme={theme}>
                 <ThemeProvider theme={colorMode === "light" ? lightTheme : darkTheme}>
-
                 <QueryClientProvider client={queryClient}>
                     <Component {...pageProps} />
                 </QueryClientProvider>

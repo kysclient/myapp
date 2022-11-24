@@ -2,7 +2,7 @@ import { addDomEvent, useDomEvent } from './use-dom-event.mjs';
 import { wrapHandler } from './event-info.mjs';
 import { supportsPointerEvents, supportsTouchEvents, supportsMouseEvents } from './utils.mjs';
 
-var mouseEventNames = {
+const mouseEventNames = {
     pointerdown: "mousedown",
     pointermove: "mousemove",
     pointerup: "mouseup",
@@ -12,7 +12,7 @@ var mouseEventNames = {
     pointerenter: "mouseenter",
     pointerleave: "mouseleave",
 };
-var touchEventNames = {
+const touchEventNames = {
     pointerdown: "touchstart",
     pointermove: "touchmove",
     pointerup: "touchend",

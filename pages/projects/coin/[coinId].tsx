@@ -1,5 +1,5 @@
 import {useRouter} from "next/router";
-import {useEffect, useState} from "react";
+import React, {useEffect, useState} from "react";
 import {useQuery} from "react-query";
 import styled from "styled-components";
 import {fetchCoinInfo, fetchCoinTickers} from "../../api/coin-api";
@@ -157,8 +157,12 @@ interface PriceData {
     }
 }
 
+interface ICoinQueryData {
+    coinId: string,
+    name: string
+}
 
-const Coin = () => {
+const Coin: React.FC = () => {
 
     const router = useRouter();
 
@@ -245,7 +249,7 @@ const Coin = () => {
                         {
                             tab === "Chart" &&
                             <CoinChart
-                                coinId={coinId? coinId : ""}
+                                coinId={coinId as string}
                                 />
                         }
 

@@ -1,4 +1,3 @@
-import { __read, __spreadArray } from 'tslib';
 import { wrap } from 'popmotion';
 import { useRef, useState, useCallback } from 'react';
 
@@ -28,20 +27,20 @@ import { useRef, useState, useCallback } from 'react';
  *
  * @public
  */
-function useCycle() {
-    var items = [];
-    for (var _i = 0; _i < arguments.length; _i++) {
-        items[_i] = arguments[_i];
-    }
-    var index = useRef(0);
-    var _a = __read(useState(items[index.current]), 2), item = _a[0], setItem = _a[1];
-    var runCycle = useCallback(function (next) {
+function useCycle(...items) {
+    const index = useRef(0);
+    const [item, setItem] = useState(items[index.current]);
+    const runCycle = useCallback((next) => {
         index.current =
             typeof next !== "number"
                 ? wrap(0, items.length, index.current + 1)
                 : next;
         setItem(items[index.current]);
-    }, __spreadArray([items.length], __read(items), false));
+    }, 
+    // The array will change on each call, but by putting items.length at
+    // the front of this array, we guarantee the dependency comparison will match up
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [items.length, ...items]);
     return [item, runCycle];
 }
 

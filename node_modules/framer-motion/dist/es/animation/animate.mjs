@@ -29,13 +29,12 @@ import { startAnimation } from './utils/transitions.mjs';
  *
  * @public
  */
-function animate(from, to, transition) {
-    if (transition === void 0) { transition = {}; }
-    var value = isMotionValue(from) ? from : motionValue(from);
+function animate(from, to, transition = {}) {
+    const value = isMotionValue(from) ? from : motionValue(from);
     startAnimation("", value, to, transition);
     return {
-        stop: function () { return value.stop(); },
-        isAnimating: function () { return value.isAnimating(); },
+        stop: () => value.stop(),
+        isAnimating: () => value.isAnimating(),
     };
 }
 

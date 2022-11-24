@@ -1,7 +1,7 @@
 /**
  * A set of attribute names that are always read/written as camel case.
  */
-var camelCaseAttributes = new Set([
+const camelCaseAttributes = new Set([
     "baseFrequency",
     "diffuseConstant",
     "kernelMatrix",

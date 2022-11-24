@@ -1,7 +1,7 @@
 import { px, degrees, scale, alpha, progressPercentage } from 'style-value-types';
 import { int } from './type-int.mjs';
 
-var numberValueTypes = {
+const numberValueTypes = {
     // Border props
     borderWidth: px,
     borderTopWidth: px,
@@ -40,7 +40,7 @@ var numberValueTypes = {
     rotateX: degrees,
     rotateY: degrees,
     rotateZ: degrees,
-    scale: scale,
+    scale,
     scaleX: scale,
     scaleY: scale,
     scaleZ: scale,

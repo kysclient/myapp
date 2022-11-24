@@ -1,13 +1,11 @@
 import { isValidMotionProp } from '../../../motion/utils/valid-prop.mjs';
 
-var shouldForward = function (key) { return !isValidMotionProp(key); };
+let shouldForward = (key) => !isValidMotionProp(key);
 function loadExternalIsValidProp(isValidProp) {
     if (!isValidProp)
         return;
     // Explicitly filter our events
-    shouldForward = function (key) {
-        return key.startsWith("on") ? !isValidMotionProp(key) : isValidProp(key);
-    };
+    shouldForward = (key) => key.startsWith("on") ? !isValidMotionProp(key) : isValidProp(key);
 }
 /**
  * Emotion and Styled Components both allow users to pass through arbitrary props to their components
@@ -34,8 +32,8 @@ catch (_a) {
     // We don't need to actually do anything here - the fallback is the existing `isPropValid`.
 }
 function filterProps(props, isDom, forwardMotionProps) {
-    var filteredProps = {};
-    for (var key in props) {
+    const filteredProps = {};
+    for (const key in props) {
         if (shouldForward(key) ||
             (forwardMotionProps === true && isValidMotionProp(key)) ||
             (!isDom && !isValidMotionProp(key)) ||

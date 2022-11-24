@@ -3,13 +3,10 @@ import { mix, distance } from 'popmotion';
 function calcLength(axis) {
     return axis.max - axis.min;
 }
-function isNear(value, target, maxDistance) {
-    if (target === void 0) { target = 0; }
-    if (maxDistance === void 0) { maxDistance = 0.01; }
+function isNear(value, target = 0, maxDistance = 0.01) {
     return distance(value, target) < maxDistance;
 }
-function calcAxisDelta(delta, source, target, origin) {
-    if (origin === void 0) { origin = 0.5; }
+function calcAxisDelta(delta, source, target, origin = 0.5) {
     delta.origin = origin;
     delta.originPoint = mix(source.min, source.max, delta.origin);
     delta.scale = calcLength(target) / calcLength(source);

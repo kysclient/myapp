@@ -1,6 +1,6 @@
 import { MeasureLayout } from './MeasureLayout.mjs';
 
-var layoutFeatures = {
+const layoutFeatures = {
     measureLayout: MeasureLayout,
 };
 

@@ -16,32 +16,31 @@ import { PanSession } from './PanSession.mjs';
  *
  * @internal
  */
-function usePanGesture(_a) {
-    var onPan = _a.onPan, onPanStart = _a.onPanStart, onPanEnd = _a.onPanEnd, onPanSessionStart = _a.onPanSessionStart, visualElement = _a.visualElement;
-    var hasPanEvents = onPan || onPanStart || onPanEnd || onPanSessionStart;
-    var panSession = useRef(null);
-    var transformPagePoint = useContext(MotionConfigContext).transformPagePoint;
-    var handlers = {
+function usePanGesture({ onPan, onPanStart, onPanEnd, onPanSessionStart, visualElement, }) {
+    const hasPanEvents = onPan || onPanStart || onPanEnd || onPanSessionStart;
+    const panSession = useRef(null);
+    const { transformPagePoint } = useContext(MotionConfigContext);
+    const handlers = {
         onSessionStart: onPanSessionStart,
         onStart: onPanStart,
         onMove: onPan,
-        onEnd: function (event, info) {
+        onEnd: (event, info) => {
             panSession.current = null;
             onPanEnd && onPanEnd(event, info);
         },
     };
-    useEffect(function () {
+    useEffect(() => {
         if (panSession.current !== null) {
             panSession.current.updateHandlers(handlers);
         }
     });
     function onPointerDown(event) {
         panSession.current = new PanSession(event, handlers, {
-            transformPagePoint: transformPagePoint,
+            transformPagePoint,
         });
     }
     usePointerEvent(visualElement, "pointerdown", hasPanEvents && onPointerDown);
-    useUnmountEffect(function () { return panSession.current && panSession.current.end(); });
+    useUnmountEffect(() => panSession.current && panSession.current.end());
 }
 
 export { usePanGesture };

@@ -3,6 +3,6 @@ import { createContext } from 'react';
 /**
  * @deprecated
  */
-var DeprecatedLayoutGroupContext = createContext(null);
+const DeprecatedLayoutGroupContext = createContext(null);
 
 export { DeprecatedLayoutGroupContext };

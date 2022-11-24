@@ -32,10 +32,10 @@ import { useConstant } from '../utils/use-constant.mjs';
  * @public
  */
 function useAnimationControls() {
-    var controls = useConstant(animationControls);
+    const controls = useConstant(animationControls);
     useEffect(controls.mount, []);
     return controls;
 }
-var useAnimation = useAnimationControls;
+const useAnimation = useAnimationControls;
 
 export { useAnimation, useAnimationControls };

@@ -8,13 +8,13 @@ import { useConstant } from '../../utils/use-constant.mjs';
  * @internal
  */
 function useDrag(props) {
-    var groupDragControls = props.dragControls, visualElement = props.visualElement;
-    var dragControls = useConstant(function () { return new VisualElementDragControls(visualElement); });
+    const { dragControls: groupDragControls, visualElement } = props;
+    const dragControls = useConstant(() => new VisualElementDragControls(visualElement));
     // If we've been provided a DragControls for manual control over the drag gesture,
     // subscribe this component to it on mount.
-    useEffect(function () { return groupDragControls && groupDragControls.subscribe(dragControls); }, [dragControls, groupDragControls]);
+    useEffect(() => groupDragControls && groupDragControls.subscribe(dragControls), [dragControls, groupDragControls]);
     // Apply the event listeners to the element
-    useEffect(function () { return dragControls.addListeners(); }, [dragControls]);
+    useEffect(() => dragControls.addListeners(), [dragControls]);
 }
 
 export { useDrag };

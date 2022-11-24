@@ -4,12 +4,11 @@ import { makeUseVisualState } from '../../motion/utils/use-visual-state.mjs';
 import { createSvgRenderState } from './utils/create-render-state.mjs';
 import { buildSVGAttrs } from './utils/build-attrs.mjs';
 
-var svgMotionConfig = {
+const svgMotionConfig = {
     useVisualState: makeUseVisualState({
         scrapeMotionValuesFromProps: scrapeMotionValuesFromProps,
         createRenderState: createSvgRenderState,
-        onMount: function (props, instance, _a) {
-            var renderState = _a.renderState, latestValues = _a.latestValues;
+        onMount: (props, instance, { renderState, latestValues }) => {
             try {
                 renderState.dimensions =
                     typeof instance.getBBox ===

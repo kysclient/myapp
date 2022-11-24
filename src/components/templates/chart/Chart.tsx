@@ -3,6 +3,7 @@ import ApexChart from "react-apexcharts"
 import {useRecoilValue} from "recoil";
 import {fetchCoinHistory} from "../../../../pages/api/coin-api";
 import {useColorMode} from "@chakra-ui/react";
+import {FC} from "react";
 interface IHistorical {
     time_open: string
     time_close: string
@@ -18,7 +19,7 @@ interface ChartProps {
     coinId: string;
 }
 
-function CoinChart({coinId} : ChartProps) {
+const CoinChart: FC<ChartProps> = ({coinId}) => {
     // const isDark = useRecoilValue(isDarkAtom)
     const { colorMode, toggleColorMode } = useColorMode();
 
@@ -70,7 +71,7 @@ function CoinChart({coinId} : ChartProps) {
                             colors: ["#0fbcf9"],
                             tooltip: {
                                 y: {
-                                    formatter: (val) => {
+                                    formatter: (val: number) => {
                                         return `$ ${val.toFixed(2)}`
                                     }
                                 },

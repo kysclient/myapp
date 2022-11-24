@@ -13,9 +13,9 @@ import { useMotionValue } from './use-motion-value.mjs';
  * @public
  */
 function useVelocity(value) {
-    var velocity = useMotionValue(value.getVelocity());
-    useEffect(function () {
-        return value.velocityUpdateSubscribers.add(function (newVelocity) {
+    const velocity = useMotionValue(value.getVelocity());
+    useEffect(() => {
+        return value.velocityUpdateSubscribers.add((newVelocity) => {
             velocity.set(newVelocity);
         });
     }, [value]);

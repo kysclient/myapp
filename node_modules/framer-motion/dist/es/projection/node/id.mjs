@@ -1,9 +1,9 @@
 import { useConstant } from '../../utils/use-constant.mjs';
 import { globalProjectionState } from './state.mjs';
 
-var id = 1;
+let id = 1;
 function useProjectionId() {
-    return useConstant(function () {
+    return useConstant(() => {
         if (globalProjectionState.hasEverUpdated) {
             return id++;
         }

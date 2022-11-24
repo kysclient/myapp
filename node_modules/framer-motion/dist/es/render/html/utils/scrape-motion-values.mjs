@@ -2,9 +2,9 @@ import { isForcedMotionValue } from '../../../motion/utils/is-forced-motion-valu
 import { isMotionValue } from '../../../value/utils/is-motion-value.mjs';
 
 function scrapeMotionValuesFromProps(props) {
-    var style = props.style;
-    var newValues = {};
-    for (var key in style) {
+    const { style } = props;
+    const newValues = {};
+    for (const key in style) {
         if (isMotionValue(style[key]) || isForcedMotionValue(key, props)) {
             newValues[key] = style[key];
         }

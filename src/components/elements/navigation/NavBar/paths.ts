@@ -4,7 +4,7 @@ const NAV_LINKS: ISubNav[] = [
   { label: 'Home', href: '/' },
   {
     label: 'About Me',
-    href: '/transactions',
+    href: '/aboutme',
   },
   {
     label: 'Projects',
@@ -21,6 +21,18 @@ const NAV_LINKS: ISubNav[] = [
         subLabel: 'crud todo list app ',
         href: '/projects/toDoList',
         logo: 'servers',
+      },
+      {
+        label: 'Animation',
+        subLabel: 'animation',
+        href: '/projects/animation',
+        logo: 'wizard',
+      },
+      {
+        label: 'netflix',
+        subLabel: 'netflix clone app',
+        href: '/projects/netflix',
+        logo: 'chest',
       },
     ],
   },

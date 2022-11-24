@@ -4,7 +4,7 @@ import { useTapGesture } from '../../gestures/use-tap-gesture.mjs';
 import { useViewport } from './viewport/use-viewport.mjs';
 import { makeRenderlessComponent } from '../utils/make-renderless-component.mjs';
 
-var gestureAnimations = {
+const gestureAnimations = {
     inView: makeRenderlessComponent(useViewport),
     tap: makeRenderlessComponent(useTapGesture),
     focus: makeRenderlessComponent(useFocusGesture),

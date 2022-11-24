@@ -22,20 +22,16 @@ import { useCombineMotionValues } from './use-combine-values.mjs';
  *
  * @public
  */
-function useMotionTemplate(fragments) {
-    var values = [];
-    for (var _i = 1; _i < arguments.length; _i++) {
-        values[_i - 1] = arguments[_i];
-    }
+function useMotionTemplate(fragments, ...values) {
     /**
      * Create a function that will build a string from the latest motion values.
      */
-    var numFragments = fragments.length;
+    const numFragments = fragments.length;
     function buildValue() {
-        var output = "";
-        for (var i = 0; i < numFragments; i++) {
+        let output = ``;
+        for (let i = 0; i < numFragments; i++) {
             output += fragments[i];
-            var value = values[i];
+            const value = values[i];
             if (value)
                 output += values[i].get();
         }

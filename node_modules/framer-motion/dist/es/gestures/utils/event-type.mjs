@@ -6,7 +6,7 @@ function isMouseEvent(event) {
     return event instanceof MouseEvent;
 }
 function isTouchEvent(event) {
-    var hasTouches = !!event.touches;
+    const hasTouches = !!event.touches;
     return hasTouches;
 }
 

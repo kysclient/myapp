@@ -9,7 +9,7 @@ import { complex } from 'style-value-types';
  *
  * @internal
  */
-var isAnimatable = function (key, value) {
+const isAnimatable = (key, value) => {
     // If the list of keys tat might be non-animatable grows, replace with Set
     if (key === "zIndex")
         return false;

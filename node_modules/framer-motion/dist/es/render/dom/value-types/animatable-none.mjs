@@ -3,7 +3,7 @@ import { getDefaultValueType } from './defaults.mjs';
 
 function getAnimatableNone(key, value) {
     var _a;
-    var defaultValueType = getDefaultValueType(key);
+    let defaultValueType = getDefaultValueType(key);
     if (defaultValueType !== filter)
         defaultValueType = complex;
     // If value is not recognised as animatable, ie "none", create an animatable version origin based on the target

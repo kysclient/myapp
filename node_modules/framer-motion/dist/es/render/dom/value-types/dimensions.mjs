@@ -5,12 +5,10 @@ import { auto } from './type-auto.mjs';
 /**
  * A list of value types commonly used for dimensions
  */
-var dimensionValueTypes = [number, px, percent, degrees, vw, vh, auto];
+const dimensionValueTypes = [number, px, percent, degrees, vw, vh, auto];
 /**
  * Tests a dimensional value against the list of dimension ValueTypes
  */
-var findDimensionValueType = function (v) {
-    return dimensionValueTypes.find(testValueType(v));
-};
+const findDimensionValueType = (v) => dimensionValueTypes.find(testValueType(v));
 
 export { dimensionValueTypes, findDimensionValueType };
