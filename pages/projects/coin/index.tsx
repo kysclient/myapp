@@ -73,6 +73,8 @@ interface ICoinsProps {
 
 const  Coins: NextPage = (props) => {
     const {isLoading, data} = useQuery<ICoin[]>("allCoins", fetchCoins)
+
+    
     return (
         <Default pageName={"Coins"}>
             <Container>
@@ -83,7 +85,6 @@ const  Coins: NextPage = (props) => {
                     {/*</Link>*/}
 
                     <Title>코인</Title>
-
                 </Header>
 
                 {

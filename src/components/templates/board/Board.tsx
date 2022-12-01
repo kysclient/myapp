@@ -49,6 +49,7 @@ const Area = styled.div<IAreaProps>`
   flex-grow: 1;
   transition: background-color 0.3s ease-in-out;
   padding:10px;
+  border-radius: 10px;
 `;
 
 interface IForm {

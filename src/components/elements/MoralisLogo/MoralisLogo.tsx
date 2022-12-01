@@ -6,7 +6,7 @@ const MoralisLogo = () => {
 
   return (
     <Image
-      src={colorMode === 'dark' ? '/kysclient-dark.svg' : '/kysclient-light.svg'}
+      src={colorMode === 'dark' ? '/myApp.svg' : '/myApp.svg'}
       height={100}
       width={150}
       alt="kysclient"
