@@ -8,5 +8,15 @@ declare module 'styled-components' {
         overViewBgColor: string;
         cardColor: string;
         boardColor: string;
+        red: string;
+        black: {
+            veryDark: string;
+            darker: string;
+            lighter: string;
+        };
+        white: {
+            darker: string;
+            lighter: string;
+        };
     }
 }

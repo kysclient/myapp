@@ -3,6 +3,7 @@ import { useColorModeValue, Stack, Flex, Box, Text, Link } from '@chakra-ui/reac
 import { Illustration } from '@web3uikit/core';
 import { Logo } from '@web3uikit/core/dist/lib/Illustrations/types';
 import NextLink from 'next/link';
+import {useEffect} from "react";
 
 export interface ISubNav {
   label: string;
@@ -13,6 +14,7 @@ export interface ISubNav {
 }
 
 const SubNav = ({ label, href, subLabel, logo }: ISubNav) => {
+
   return (
     <NextLink href={href || '#'}>
       <Link
@@ -21,6 +23,7 @@ const SubNav = ({ label, href, subLabel, logo }: ISubNav) => {
         p={2}
         rounded={'md'}
         _hover={{ bg: useColorModeValue('green.50', 'gray.900') }}
+        onClick={() => {href === "/projects/netflix" && window.open("http://localhost:3001/projects/clone")}}
       >
         <Stack direction={'row'} align={'center'}>
           <Illustration logo={logo as Logo} width={46} height={46} id={`${label}-navitem`} />

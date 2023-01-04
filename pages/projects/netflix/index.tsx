@@ -5,8 +5,8 @@ import styled from "styled-components";
 
 const Netflix: NextPage = () => {
     return (
-        <Default pageName={"About Me"}>
-            netflix todo
+        <Default pageName={"Clone app"}>
+            Check it on new tab🤍
         </Default>
     )
 }

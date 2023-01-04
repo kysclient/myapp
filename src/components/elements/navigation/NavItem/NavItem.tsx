@@ -1,6 +1,6 @@
 import { Box, Link, Popover, PopoverContent, PopoverTrigger, Stack, useColorModeValue } from '@chakra-ui/react';
 import { ChevronDownIcon } from '@chakra-ui/icons';
-import { FC } from 'react';
+import {FC, useEffect} from 'react';
 import { ISubNav } from '../SubNav/SubNav';
 import { SubNav } from '../SubNav';
 import NextLink from 'next/link';
